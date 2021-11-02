@@ -1,3 +1,4 @@
+
 @mixin clearfix {
     &::after {
         content: "";
@@ -11,4 +12,37 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+// Media query manager
+/* Desktop-first approach -- Ugg... Don't do this. Should be refactored to be mobile-first!!
+0 - 600px - phone
+601 - 900px - tablet portrait
+901 - 1200px - tablet landscape
+1201 - 1799px - where our normal styles apply
+1800px+ - big desktop
+
+$breakpoint arguement choices:
+ - phone
+ - tab-port
+ - tab-land
+ - big-desktop
+
+ ORDER: Base + typography > general layout + grid > page layout > components
+ 
+ 1em = 16px
+ */
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 37.5em) { @content }; //600px
+    }
+    @if $breakpoint == tab-port {
+        @media (max-width: 56.25em) { @content }; //900px
+    }
+    @if $breakpoint == tab-land {
+        @media (max-width: 75em) { @content }; //1200px
+    }
+    @if $breakpoint == big-desktop {
+        @media (min-width: 112.5em) { @content }; //1800opx
+    }
 }

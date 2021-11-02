@@ -12,7 +12,7 @@
     
     &__content {
         @include absCenter;
-        width: 75%;
+        width: 90%;
         background-color: $color-white;
         box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
         border-radius: 3px;
@@ -26,6 +26,11 @@
     &__left {
         width: 33.333333%;
         display: table-cell;
+
+        @include respond(tab-port) {
+            width: 50%;
+            display: flex;
+        }
     }
 
     &__right {
@@ -33,6 +38,13 @@
         display: table-cell;
         vertical-align: middle;
         padding: 3rem 5rem;
+
+        @include respond(tab-port) {
+            width: 100%;
+            display: block;
+            padding: 2rem 4rem;
+
+        }
     }
 
     &__img {
@@ -42,7 +54,7 @@
 
     &__text {
         font-size: 1.4rem;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
 
         -moz-column-count: 2;
         -moz-column-gap: 4rem;
@@ -56,6 +68,10 @@
         -ms-hyphens: auto;
         -webkit-hyphens: auto;
         hyphens: auto;
+
+        @include respond(phone) {
+            column-count: 1;
+        }
     }
 
     &:target {
